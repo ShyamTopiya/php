@@ -16,3 +16,4 @@ echo "good";
 exit();
 
 echo "morning";
+?>
