@@ -1,6 +1,6 @@
 <?php
 
-$string = "My Name Is Shyam Topiya & I Am Engineer";
+$string = "My name is Shyam Topiya & i am an engineer";
 
 $string_word_count = str_word_count($string,2,"&");
 
