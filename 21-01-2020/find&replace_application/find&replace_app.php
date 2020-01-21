@@ -10,13 +10,14 @@ $find_length = strlen($find);
 if(isset($_GET['find']))
 {
     echo "Your String is: ".$string."<br>";
-    if($string_position == true)
+    if($string_position !== false)
     {
-    while($string_position = strpos($string,$find,$offset))
+    do
     {
         echo "<strong>".$find."</strong>&nbsp&nbspfound at position&nbsp&nbsp<strong>".$string_position."</strong><br>";
         $offset = $string_position + $find_length;
     }
+    while($string_position = strpos($string,$find,$offset));
 }
 else{
     echo "no match found";
@@ -36,4 +37,3 @@ if(isset($_GET['find&replace']))
     
     }
 }
-?>
