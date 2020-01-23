@@ -1,20 +1,23 @@
 <?php
-
-for($i=0;$i<7;$i++)
+$temp = 0;
+echo "<table border=1px solid black>";
+for($i=0;$i<=7;$i++)
 {
-    for($j=0;$j<7;$j++)
+    echo "<tr>";
+    for($j=0;$j<=7;$j++)
     {
-        if()
+        if($j==0 || $j==7 || $j == $temp || $j == 7-$temp)
         {
-        echo "*";
+        echo "<td>*</td>";
         }
         else{
-            echo "&nbsp&nbsp";
+            echo "<td>&nbsp;</td>";
         }
     }
-    echo "<br>";
+    $temp++;
+    echo "</tr>";
 }
-
+echo "</table>";
 
 
 ?>
