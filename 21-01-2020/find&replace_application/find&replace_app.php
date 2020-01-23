@@ -27,7 +27,7 @@ else{
 if(isset($_GET['find&replace']))
 {
     echo "Your original String is: ".$string."<br>";
-    if($string_position == true)
+    if($string_position !== false)
     {
     $new_string = str_replace($find,$replace,$string);
     echo "Your new string is:&nbsp&nbsp<strong>".$new_string."</strong>";
