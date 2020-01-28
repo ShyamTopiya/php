@@ -3,9 +3,9 @@ echo "<pre>";
 print_r($_POST);
 echo "</pre>";
 session_start();
-function getValues($section,$fieldname)
+function getValues($section,$fieldname,$returntype = "")
 {
-    return (isset($_SESSION[$section][$fieldname]) ? $_SESSION[$section][$fieldname] : "" );
+    return (isset($_SESSION[$section][$fieldname]) ? $_SESSION[$section][$fieldname] : $returntype );
 }
 function setSession($section)
 {

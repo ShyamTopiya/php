@@ -131,7 +131,7 @@
                     <label>How do you like us to get in touch with you?</label>
                     <?php $getInTouch = ["Post","Email","SMS","Phone"]?>  
                     <?php foreach($getInTouch as $items):?>
-                        <?php $checkedValue = array_intersect(getValues('other-info','getInTouch'),[$items]) ? 'checked' : "" ?>
+                        <?php $checkedValue = array_intersect(getValues('other-info','getInTouch',[]),[$items]) ? 'checked' : "" ?>
                         <input type="checkbox" name="other-info[getInTouch][]" value="<?php echo $items?>"
                         <?php echo $checkedValue?>>
                         <?php echo $items?>
