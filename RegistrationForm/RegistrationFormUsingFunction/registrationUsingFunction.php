@@ -11,7 +11,9 @@
         </style>
     </head>
     <body>
+        <h1 style="text-align: center">Registration Form</h1>
         <form action="registrationUsingFunction.php" method="POST">
+
             <div class="account">
                 <div class="prefix">
                     <label>prefix</label>
@@ -96,14 +98,14 @@
                     <label>Describe Yourself</label>
                     <textarea cols="30" rows="3" name="other-info[aboutYourSelf]"><?php echo getValues('other-info','aboutYourSelf');?></textarea>
                 </div><br>
-                <div class="profile-image">
+                <!-- <div class="profile-image">
                     <label>Profile Image</label>
                     <input type="file" name="other-info[profileImage]" value="<?php echo getValues('other-info','profileImage')?>">
                 </div><br>
                 <div class="certificate">
                     <label>Certificate Upload</label>
                     <input type="file" name="other-info[certificate]" value="<?php echo getValues('other-info','certificate')?>">
-                </div><br>
+                </div><br> -->
                 <div class="bussiness">
                     <label>Bussiness</label>
                     <?php $bussiness = ["Under 1 year","1-2 year","2-5 year","5-10 year","over 10 years"]?>  
