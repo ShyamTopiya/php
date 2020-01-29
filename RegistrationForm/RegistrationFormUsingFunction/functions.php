@@ -21,7 +21,7 @@ function validatekey($fieldname,$value)
         case 'postalcode':
             return(!preg_match("/^[0-9]*$/",$value)) ? 0 : 1;
             break;
-        case 'emailId':
+        case 'email':
             return (!filter_var($fieldname, FILTER_VALIDATE_EMAIL)) ? 0 : 1;
             break;
         default :
