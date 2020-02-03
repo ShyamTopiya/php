@@ -1,0 +1,7 @@
+ArrayFilter:-
+
+array filter is used to choose specific array keys and values.
+we can also say that it is a function to filter the array.
+
+eg:-array_intersect($array1,$array2) :- it is uesd to find the simmilar value between 2 arrays.
+ 

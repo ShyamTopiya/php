@@ -1,0 +1,5 @@
+String Replace:-
+
+syntax = str_replace($string1,$string2);
+
+defination:- it is uesd to replace the string with the other string.
