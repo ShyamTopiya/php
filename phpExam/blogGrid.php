@@ -1,37 +1,7 @@
 <?php
 require_once "connection.php";
 require_once "header.php";
-
-$query = "SELECT * FROM blog_post";
-        
-$result = mysqli_query($conn, $query);
-
-if (mysqli_num_rows($result) > 0) 
-{
-    echo "<table>";
-    echo "<tr>";
-    echo "<th>blog_id</th>";
-    echo "<th>parent_name</th>";
-    echo "<th>title</th>";
-    echo "<th>Published At</th>";
-    echo "<th>Edit</th>";
-    echo "<th>Delete</th>";
-    echo "</tr>";
-    while($row = mysqli_fetch_assoc($result))
-    {
-       echo "<tr>";
-       echo "<td>".$row['blog_id']."</td>";
-       echo "<td>".$row['parent_name']."</td>";
-       echo "<td>".$row['title']."</td>";
-       echo "<td>".$row['published_at']."</td>";
-       echo "<td><a href='editBlog.php?id=".$row['blog_id']."'>Edit</a></td>";
-       echo "<td><a href='#?id=".$row['blog_id']."'>Delete</a></td>";
-       echo "</tr>";
-    }
-    echo "</table>";
-} 
 ?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,6 +15,43 @@ if (mysqli_num_rows($result) > 0)
     </style>
 </head>
 <body>
-  
+<br>
+<h1 style="text-align: center">Blogs</h1>
+  <a href="createBlog.php">Add Blog</a><br>
+  <br>
 </body>
 </html>
+
+
+<?php
+$query = "SELECT * FROM blog_post";
+        
+$result = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($result) > 0) 
+{
+    echo "<table>";
+    echo "<tr>";
+    echo "<th>blog_id</th>";
+    echo "<th>parent_category_name</th>";
+    echo "<th>title</th>";
+    echo "<th>Published At</th>";
+    echo "<th>Edit</th>";
+    echo "<th>Delete</th>";
+    echo "</tr>";
+    while($row = mysqli_fetch_assoc($result))
+    {
+       echo "<tr>";
+       echo "<td>".$row['blog_id']."</td>";
+       echo "<td>".$row['parent_name']."</td>";
+       echo "<td>".$row['title']."</td>";
+       echo "<td>".$row['published_at']."</td>";
+       echo "<td><a href='editBlog.php?id=".$row['blog_id']."'>Edit</a></td>";
+       echo "<td><a href='deleteRecord.php?id=".$row['blog_id']."'>Delete</a></td>";
+       echo "</tr>";
+    }
+    echo "</table>";
+} 
+?>
+
+

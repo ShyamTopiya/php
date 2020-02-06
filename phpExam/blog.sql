@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2020 at 06:54 AM
+-- Generation Time: Feb 06, 2020 at 09:32 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -46,7 +46,7 @@ CREATE TABLE `blog_post` (
 
 INSERT INTO `blog_post` (`blog_id`, `parent_name`, `title`, `url`, `content`, `categoryImage`, `published_at`, `created_at`, `updated_at`) VALUES
 (12, 'Health,Music', 'shyam', 'jjkjk', 'hjhjh', 'uploads/NATURE+GENERIC+TREES.jpg', '2020-01-01', '2020-02-04 12:52:49', '2020-02-04 12:52:49'),
-(13, 'LifeStyle,Health', 'rohit', 'qwer', 'qwe', 'uploads/', '2020-01-01', '2020-02-04 12:54:35', '2020-02-04 12:54:35');
+(13, 'LifeStyle,Health', 'rohit ', 'qwer   ', 'qwe   ', 'uploads/', '2020-01-01', '2020-02-06 07:53:15', '2020-02-04 12:54:35');
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `parent_category_id`, `parent_name`, `title`, `metaTitle`, `url`, `content`, `categoryImage`, `created_at`, `updated_at`) VALUES
-(9, 1, 'LifeStyle', 'hah', 'jkjk', 'jjkjk', 'jkjk', 'uploads/NATURE+GENERIC+TREES.jpg', '2020-02-04 11:18:37', '2020-02-04 11:18:37');
+(11, 1, 'LifeStyle', 'shyam', 'jkjk', 'jjkjk', 'jkjk', 'uploads/NATURE+GENERIC+TREES.jpg', '2020-02-06 06:00:52', '2020-02-06 06:00:52'),
+(12, 3, 'Education ', 'keyur ', 'qwqw ', 'wkwk ', 'jkjkjjk ', 'uploads/NATURE+GENERIC+TREES.jpg', '2020-02-06 08:28:37', '2020-02-06 08:15:29');
 
 -- --------------------------------------------------------
 
@@ -164,13 +165,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `blog_post`
 --
 ALTER TABLE `blog_post`
-  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `blog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `parentcategory`

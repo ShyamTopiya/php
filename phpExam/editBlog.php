@@ -1,7 +1,8 @@
 <?php
 require_once "connection.php";
 $blogId = $_GET['id'];
-$query = "SELECT * FROM blog_post WHERE blog_id = '$blogId'";
+
+$query = "SELECT * FROM blog_post WHERE blog_id = $blogId";
         
 $result = mysqli_query($conn, $query);
 
@@ -9,33 +10,40 @@ if (mysqli_num_rows($result)) {
     $row = mysqli_fetch_assoc($result);
 
 } 
-function updateData($tableName,$userId)
+function updateData($tableName,$blogId)
 {
-    global $blogId;
+    $blogId = $_POST['id'];
     global $conn;
-    $userData = [];
-    foreach($_POST['other-info'] as $key=>$val) 
-    {
-        if(is_array($val))
-        {
-            foreach($val as $item)
+        foreach($_POST as $key=>$val) {
+            if($key != 'updateBlog' && $key !='id')
             {
-                $implodeData =  implode(', ', $userData);
-               $sql = "UPDATE $tableName SET $implodeData WHERE blog_id = '$blogId'";
-               echo $sql."<br>";
-               $userData = [];
-            } 
+                if(is_array($val))
+                {
+                    $valueArr = implode(",",$val); 
+                    $userData[] = "$key = '$valueArr'";
+                }
+                else
+                {
+                    $userData[] = "$key = '$val '";
+                }
+                
+            }
+            
         }
-        else
+        $sql = "UPDATE $tableName SET " . implode(', ', $userData) . " WHERE blog_id = '$blogId'";
+       
+        $result =  mysqli_query($conn,$sql);
+        if ($result) 
         {
-            $implodeData =  implode(', ', $userData);
-            $sql = "UPDATE $tableName SET $implodeData WHERE blog_id = '$blogId' ";
-            echo $sql."<br>";
-            $userData = [];
-        }
-    
-    }
+            echo "success";
+           echo "<script>alert('Record Updated successfully');location.href = 'dashboard.php';</script>";
+         }
+         else
+         {
+             echo mysqli_error($conn);
+         }
 }
+
 
 if(isset($_POST['updateBlog']))
 {
@@ -59,7 +67,7 @@ if(isset($_POST['updateBlog']))
 </head>
 <body>
     <h1 style="text-align: center">Edit Blog</h1>
-    <form action="createBlog.php" method="post" enctype="multipart/form-data">
+    <form action="editBlog.php" method="post" enctype="multipart/form-data">
         <div class="title">
             <label>Title</label>
             <input type="text" name="title" value="<?= $row['title']?>">
@@ -70,19 +78,16 @@ if(isset($_POST['updateBlog']))
         </div><br>
         <div class="URL">
             <label>URL</label>
-            <input type="text" name="URL"  value="<?= $row['url']?>">
+            <input type="text" name="url"  value="<?= $row['url']?>">
         </div><br>
         <div class="publishedAt">
             <label>published At</label>
-            <input type="date" name="publishedAt" value="<?= $row['published_at']?>">
+            <input type="date" name="published_at" value="<?= $row['published_at']?>">
         </div><br>
         <div class="parentCategory">
-            <div class="parentCategory">
+            <div class="parent_name">
             <label>parent Category</label>
-            
-            
-            
-             <select name="parentCategory[]" multiple>
+             <select name="parent_name[]" multiple>
              <?php $parentCategory = ['LifeStyle','Health','Education','Music']?>
                  <?php $get = explode(",",$row['parent_name'])?>
                             <?php foreach($parentCategory as $items): ?>
@@ -98,6 +103,7 @@ if(isset($_POST['updateBlog']))
             <label>Image</label>
             <input type="file" name="categoryImage" value="<?= $row['categoryImage']?>">
         </div><br><br>
+        <input type="hidden" value="<?= $blogId?>" name="id">
         <input type="submit" value="Update Blog" name="updateBlog">
     </form>
 </body>

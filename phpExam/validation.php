@@ -144,6 +144,11 @@ function insertData($data, $tableName) {
     return (mysqli_query($conn, $insertQuery) == 1 ) ? mysqli_insert_id($conn) : mysqli_error($conn);
 } 
 
+function deleteRecord($tableName, $condition) {
+        global $conn;
+        $deleteQuery = "delete from $tableName where $condition";
+        return (mysqli_query($conn, $deleteQuery) == 1 ) ? 1 : mysqli_error($conn);
+    }
 
 
 
