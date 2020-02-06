@@ -4,19 +4,20 @@ require_once "validation.php";
 ?>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add new category</title>
     <style>
-        label
-        {
+        label {
             display: inline-block;
-            width : 200px;
+            width: 200px;
         }
     </style>
 </head>
+
 <body>
     <h1 style="text-align: center">Add Category</h1>
     <form action="createCategory.php" method="post" enctype="multipart/form-data">
@@ -38,20 +39,21 @@ require_once "validation.php";
         </div><br>
         <div class="parentCategory">
             <div class="parentCategory">
-            <label>parent Category</label>
-            <?php $parentCategory = ['LifeStyle','Health','Education','Music']?>
-            <select name="parentCategory">
-            <?php foreach($parentCategory as $items) :?>
-                <option name="parentCategory" value="<?php echo $items;?>" >
-                <?php echo $items;?></option>
-            <?php endforeach;?>
-            </select>
+                <label>parent Category</label>
+                <?php $parentCategory = ['LifeStyle', 'Health', 'Education', 'Music'] ?>
+                <select name="parentCategory">
+                    <?php foreach ($parentCategory as $items) : ?>
+                        <option name="parentCategory" value="<?php echo $items; ?>">
+                            <?php echo $items; ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div><br>
-        <div class="title">
-            <label>Image</label>
-            <input type="file" name="categoryImage">
-        </div><br><br>
-        <input type="submit" value="Add Category" name="addCategory">
+            <div class="title">
+                <label>Image</label>
+                <input type="file" name="categoryImage">
+            </div><br><br>
+            <input type="submit" value="Add Category" name="addCategory">
     </form>
 </body>
+
 </html>

@@ -12,6 +12,5 @@ function insertData($userCleanData, $tableName) {
     $insert = "insert into $tableName ($tablefields) values ($tableValues)";
     
     return (mysqli_query($conn, $insert) == 1 ) ? mysqli_insert_id($conn) : mysqli_error($conn);
-} 
-
+}
 ?>
