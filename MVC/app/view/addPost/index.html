@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Registration Form{% endblock %}
+{%block body %}
+{% if edit == 'edit' %}
+    {% set btn = 'Update' %}
+    {% set action = 'updatepost' %}
+{% else %}
+    {% set btn = 'Add' %}
+    {% set action = 'addPost' %}
+{% endif %}
+    <h1>Registration Form</h1>
+
+    <form action="{{action}}" method="POST">
+        <div class="postTitle">
+            <label>Post Title</label>
+            <input type="text" name="title" value="{{posts.title}}">
+        </div><br>
+        <div class="postDiscription">
+            <label>Post Discription</label>
+            <textarea cols="30" rows="2" name="content">{{posts.content}}</textarea>
+        </div><br>
+        <input type="submit" value="{{btn}}">
+    </form> 
+{% endblock %}
