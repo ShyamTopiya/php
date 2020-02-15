@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Welcome Admin{% endblock %}
+{%block body %}
+    <h1>Category</h1>
+    <table border=1>
+        <tr>
+            <th>category id</th>
+            <th>parent id</th>
+            <th>category Name</th>
+            <th>Url Key</th>
+            <th>Image</th>
+            <th>Status</th>
+            <th>Description</th>
+            <th>Parent Category</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        {% for product in category %}
+        <tr>
+            <td>{{product.category_id}}</td>
+            <td>{{product.parent_id}}</td>    
+            <td>{{product.categoryName}}</td>
+            <td>{{product.urlKey}}</td>
+            <td><img src="../{{product.Image}}" style="height: 100px;width: 100px;"></td>
+            <td>{{product.Status}}</td>
+            <td>{{product.Description}}</td>
+            <td>{{product.parentCategory}}</td>
+            <td>{{product.createdAt}}</td>
+            <td>{{product.updatedAt}}</td>
+            <td><a href="category/{{product.category_id}}/edit">Edit</a></td>
+            <td><a href="category/{{product.category_id}}/delete">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table><br><br>
+    <a href="/cybercom/php/productMvc/public/admin/category/addNew">Add Category</a>
+{% endblock %}

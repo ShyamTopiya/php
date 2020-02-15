@@ -1,0 +1,54 @@
+
+{% extends "base.html" %}
+{% block title %}Registration Form{% endblock %}
+{%block body %}
+{% if edit == 'edit' %}
+    {% set btn = 'Update' %}
+    {% set action = 'updateCategory' %}
+    {% set heading = 'Update Category' %}
+{% else %}
+    {% set btn = 'Add' %}
+    {% set action = 'addCategory' %}
+    {% set heading = 'Add Category' %}
+{% endif %}
+    <h1>{{heading}}</h1>
+
+    <form action="{{action}}" method="POST" enctype="multipart/form-data">
+        <div class="categoryName">
+            <label>Category Name</label>
+            <input type="text" name="categoryName" value="{{category.categoryName}}">
+        </div><br>
+        <div class="urlKey">
+            <label>urlKey</label>
+            <input type="text" name="urlKey" value="{{category.urlKey}}">
+        </div><br>
+        <div class="Image">
+            <label>Upload Image</label>
+            <input type="file" name="Image" value="/public/Uploads/{{category.Image}}">
+        </div><br>
+        <div class="status">
+            <label>status</label>
+            <input type="text" name="Status" value="{{category.Status}}">
+        </div><br>
+        <div class="Discription">
+            <label>Product Discription</label>
+            <textarea cols="30" rows="2" name="Description">{{category.Description}}</textarea>
+        </div><br>
+        <div class="parentCategory">
+            <div class="parentCategory">
+                <label>parent Category</label>
+                <select name="parentCategory">
+                    {% for items in category %}
+                    {% if category.category_id == items.parentCategory %}
+                        {% set select = 'selected' %}
+                    {% else %}
+                        {% set select = "" %}
+                    {% endif %}
+                        <option name="parentCategory" value="{{items.parentCategory}}" {{select}}>
+                            {{items.parentCategory}}</option>
+                    {% endfor %}
+                </select>
+            </div><br>
+        <input type="submit" value="{{btn}}">
+    </form> 
+{% endblock %}

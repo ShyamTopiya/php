@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        label
+        {
+            display: inline-block;
+            width : 200px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/cybercom/php/productMvc/public/admin/home">Home</a>
+        <a href="/cybercom/php/productMvc/public/admin/showProduct">Manage Products</a>
+        <a href="/cybercom/php/productMvc/public/admin/showCategory">Manage Category</a>
+        
+    </nav>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>
