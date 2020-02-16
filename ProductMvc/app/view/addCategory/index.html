@@ -26,9 +26,17 @@
             <label>Upload Image</label>
             <input type="file" name="Image" value="/public/Uploads/{{category.Image}}">
         </div><br>
-        <div class="status">
-            <label>status</label>
-            <input type="text" name="Status" value="{{category.Status}}">
+        <div class="parentCategory">
+            <label>Status</label>
+            <select name="status">
+                {% if category.Status == 1 %}
+                {% set select = 'selected' %}
+                {% else %}
+                {% set select = '' %}
+                {% endif %}
+                <option value="0" selected>0</option>
+                <option value="1" {{select}}>1</option>
+            </select>
         </div><br>
         <div class="Discription">
             <label>Product Discription</label>
@@ -37,15 +45,16 @@
         <div class="parentCategory">
             <div class="parentCategory">
                 <label>parent Category</label>
-                <select name="parentCategory">
-                    {% for items in category %}
-                    {% if category.category_id == items.parentCategory %}
+                <select name="parent_id">
+                    <option value="Null">NULL</option>
+                    {% for items in allcategory %}
+                    {% if items.category_id == category.parent_id %}
                         {% set select = 'selected' %}
                     {% else %}
                         {% set select = "" %}
                     {% endif %}
-                        <option name="parentCategory" value="{{items.parentCategory}}" {{select}}>
-                            {{items.parentCategory}}</option>
+                        <option value="{{items.parent_id}}" {{select}}>
+                            {{items.categoryName}}</option>
                     {% endfor %}
                 </select>
             </div><br>

@@ -29,13 +29,15 @@ class Products extends \core\controller
 
     public function editaction()
     {
-    $products = addProducts::editProduct($this->route_params['id']);
-    view::renderTemplate('addProduct/index.html',['edit'=>'edit','products'=>$products]);
+      
+         $products = addProducts::editProduct($this->route_params['id']);
+        view::renderTemplate('addProduct/index.html',['edit'=>'edit','products'=>$products]);
     }
 
     public function updateProduct()
     {
-        addProducts::updateProduct($this->route_params['id']);
+        $_POST = $this->imageValidate();
+        addProducts::updateProduct($this->route_params['id'],$_POST);
     }
 
     public function delete()

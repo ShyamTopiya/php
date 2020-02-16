@@ -11,7 +11,6 @@
     {% set heading = 'Add Product' %}
 {% endif %}
     <h1>{{heading}}</h1>
-
     <form action="{{action}}" method="POST" enctype="multipart/form-data">
         <div class="productName">
             <label>Product Name</label>
@@ -29,9 +28,17 @@
             <label>Upload Image</label>
             <input type="file" name="Image" value="/public/Uploads/{{products.Image}}">
         </div><br>
-        <div class="status">
-            <label>status</label>
-            <input type="text" name="Status" value="{{products.Status}}">
+        <div class="parentCategory">
+            <label>Status</label>
+            <select name="status">
+                {% if products.Status == '1' %}
+                {% set select = 'selected' %}
+                {% else %}
+                {% set select = '' %}
+                {% endif %}
+                <option value="0" selected>0</option>
+                <option value="1" {{select}}>1</option>
+            </select>
         </div><br>
         <div class="Discription">
             <label>Product Discription</label>

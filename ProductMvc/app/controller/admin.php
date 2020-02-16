@@ -2,7 +2,6 @@
 namespace app\controller;
 use \Core\view;
 use \app\model\Product;
-use \app\model\AddProducts;
 
 
 class Admin extends \core\controller
@@ -37,6 +36,11 @@ class Admin extends \core\controller
     {
         $category = Product::getAll('categories'); 
         view::renderTemplate('category/index.html',['category'=>$category]);
+    }
+    public function showCms()
+    {
+        $cms = Product::getAll('cms_pages'); 
+        view::renderTemplate('cms/index.html',['cms'=>$cms]);
     }
 
     

@@ -5,16 +5,16 @@ use PDOException;
 
 class Product extends \core\Model
 {
-    public static function getAll($table)
+    public static function getAll($table,$condition="")
     {
         try
             {
                 $db = static::getDB();
 
-                $stmt = $db->query("SELECT * FROM $table ORDER BY createdAt");
+                $stmt = $db->query("SELECT * FROM $table  $condition ORDER BY createdAt");
     
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                return $result;
+                    return $result;
             }catch(PDOException $e){
                 echo $e->getMessage();
             }

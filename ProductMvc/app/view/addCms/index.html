@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+{% block title %}Registration Form{% endblock %}
+{%block body %}
+{% if edit == 'edit' %}
+    {% set btn = 'Update' %}
+    {% set action = 'updateCms' %}
+    {% set heading = 'Update Cms' %}
+{% else %}
+    {% set btn = 'Add' %}
+    {% set action = 'addCms' %}
+    {% set heading = 'Add Cms' %}
+{% endif %}
+    <h1>{{heading}}</h1>
+
+    <form action="{{action}}" method="POST" enctype="multipart/form-data">
+        <div class="pageTitle">
+            <label>Page Title</label>
+            <input type="text" name="pageTitle" value="{{cms.pageTitle}}">
+        </div><br>
+        <div class="urlKey">
+            <label>urlKey</label>
+            <input type="text" name="urlKey" value="{{cms.urlKey}}">
+        </div><br>
+        <div class="status">
+            <label>Status</label>
+            <select name="status">
+                {% if cms.Status == 1 %}
+                {% set select = 'selected' %}
+                {% else %}
+                {% set select = '' %}
+                {% endif %}
+                <option value="0" selected>0</option>
+                <option value="1" {{select}}>1</option>
+            </select>
+        </div><br>
+        <div class="content">
+            <label>content</label>
+            <textarea cols="30" rows="2" name="Content">{{cms.Content}}</textarea>
+        </div><br>
+        <input type="submit" value="{{btn}}">
+    </form> 
+{% endblock %}

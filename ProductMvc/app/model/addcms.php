@@ -3,25 +3,39 @@ namespace app\model;
 use PDO;
 use PDOException;
 
-class AddProducts extends \core\Model
+class Addcms extends \core\Model
 {
-    public static function addProduct($value="")
+    public static function addCms($value="")
     {
         try
             {
                 $db = static::getDB();
 
                 $tablefields = implode(",", array_keys($_POST));
-                $tableValues = "'" . implode("','", array_values($_POST)) . "'";
+               $finalArray = [];
+                foreach($_POST as $value)
+                {
+                    if($value != 'Null')
+                {
+                    $finalArray[] = "'".$value."'";  
+                }
+                else
+                {
+                    $finalArray[] = $value;
+                }
+            }
+                $tableValues = implode(',',$finalArray);
                 
                 
-                $stmt = "INSERT INTO products ($tablefields) VALUES ($tableValues)";
+                
+                
+                $stmt = "INSERT INTO cms_pages ($tablefields) VALUES ($tableValues)";
                 echo $stmt;
                 $db->exec($stmt);
 
                  echo "<script>
                          alert('product added successfully');
-                         window.location.replace('/cybercom/php/productMvc/public/admin/showProduct');
+                         window.location.replace('/cybercom/php/productMvc/public/admin/showCms');
                      </script>";
     
             }catch(PDOException $e){
@@ -29,13 +43,13 @@ class AddProducts extends \core\Model
             }
         }
 
-        public static function editProduct($value ="")
+        public static function editCms($value ="")
         {
             try
                 {
                     $db = static::getDB();
 
-                    $stmt = "SELECT * FROM products WHERE id='$value'";
+                    $stmt = "SELECT * FROM cms_pages WHERE id='$value'";
                     $stmt = $db->query($stmt); 
                     $result = $stmt->fetch(PDO::FETCH_ASSOC);
                
@@ -46,21 +60,25 @@ class AddProducts extends \core\Model
                 }
             }
 
-            public static function updateProduct($value ="",$data)
+            public static function updateCms($value ="",$data)
             {
                 try
                 {
                     $db = static::getDB();
-
+                    echo "<pre>";
+                    print_r($data);
                      foreach ($data as $key => $val) {
+                         if($val == 'Null')
+                            $userData[] = "$key = $val";
+                         else
                             $userData[] = "$key = '$val '";
                         }
-                    $sql = "UPDATE products SET " . implode(', ', $userData) . " WHERE id = '$value'";  
+                    $sql = "UPDATE cms_pages SET " . implode(', ', $userData) . " WHERE id = '$value'";  
                       echo $sql;
                     $db->exec($sql);
                      echo "<script>
-                     alert('product updated successfully');
-                     window.location.replace('/cybercom/php/productMvc/public/admin/showProduct');
+                     alert('category updated successfully');
+                     window.location.replace('/cybercom/php/productMvc/public/admin/showCms');
                  </script>";
                 }
                 catch(PDOException $e){
@@ -68,17 +86,17 @@ class AddProducts extends \core\Model
                 }   
             }
 
-            public static function deleteProduct($value ="")
+            public static function deleteCms($value ="")
             {
                 try
                     {
                         $db = static::getDB();
     
-                        $stmt = "DELETE FROM products WHERE id='$value'";
+                        $stmt = "DELETE FROM cms_pages WHERE id='$value'";
                         $db->exec($stmt);
                     echo "<script>
-                    alert('product deleted successfully');
-                    window.location.replace('/cybercom/php/productMvc/public/admin/showProduct');
+                    alert('category deleted successfully');
+                    window.location.replace('/cybercom/php/productMvc/public/admin/showCms');
                 </script>";
             
                     }catch(PDOException $e){
