@@ -1,16 +1,20 @@
 {% extends "frontbase.html" %}
-
+{% if product.urlKey != " " %}
+{% set title = product.urlKey %}
+{% else %}
+{% set title = Categories %}
+{% endif %}
 {% block body %}
-<h1>Categories</h1>
+<h1>{{title}}</h1>
 
     {% for value in category %}
     <select onchange="location = this.value;">
     <option>{{value.parentName}}</option>
     {% set childarr = value.childName|split(',') %} 
     {% for val in childarr %} 
-    <option value="category/view">{{val}}</option></a>
+    <option value="/cybercom/php/productMvc/public/category/view/{{val}}">{{val}}</option></a>
     {% endfor %}
     </select>
     {% endfor %}
-        
+     <img src="../../{{product.Image}}">  
 {% endblock %}

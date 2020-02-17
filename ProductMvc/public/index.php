@@ -22,6 +22,8 @@ $router->add('{controller}');
 $router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}',['namespace'=>'admin']);
 $router->add('admin/{controller}/{id:\d+}/{action}',['namespace'=>'admin']);
+$router->add('{controller}/{action}/{url}');
+
 $url = $_SERVER['QUERY_STRING'];
 if($router->match($url))
 {

@@ -53,7 +53,8 @@
                     {% else %}
                         {% set select = "" %}
                     {% endif %}
-                        <option value="{{items.parent_id}}" {{select}}>
+                    {{items.parent_id}}
+                        <option value="{{items.category_id}}" {{select}}>
                             {{items.categoryName}}</option>
                     {% endfor %}
                 </select>

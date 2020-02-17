@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2020 at 11:11 AM
+-- Generation Time: Feb 17, 2020 at 06:00 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -45,15 +45,15 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`category_id`, `parent_id`, `categoryName`, `urlKey`, `Image`, `Status`, `Description`, `createdAt`, `updatedAt`) VALUES
-(1, NULL, 'shoes ', 'we ', '../public/uploads/nature.jpg ', 1, 'qwert ', '2020-02-15 10:06:21', '2020-02-15 10:06:21'),
-(2, NULL, 'electronics', 'cvjk', '', 1, 'vbjkl;', '2020-02-15 10:08:02', '2020-02-15 10:08:02'),
-(3, 1, 'canvas', 'sdf', '', 1, 'sdfg', '2020-02-15 10:09:38', '2020-02-15 10:09:38'),
-(6, NULL, 'clothes', 'bjk', '../public/uploads/NATURE+GENERIC+TREES.jpg', 0, 'wedf', '2020-02-15 11:55:28', '2020-02-15 11:55:28'),
-(7, 6, 'man\'s Wear', 'man\'s Wear', '', 1, 'mans Wear', '2020-02-17 09:16:45', '2020-02-17 09:16:45'),
+(1, NULL, 'shoes ', 'shoes', '../public/uploads/nature.jpg ', 1, 'qwert ', '2020-02-15 10:06:21', '2020-02-15 10:06:21'),
+(2, NULL, 'electronics', 'electronics', '', 1, 'vbjkl;', '2020-02-15 10:08:02', '2020-02-15 10:08:02'),
+(3, 1, 'canvas ', 'canvas ', '../public/uploads/canvas.jpg ', 1, 'sdfg ', '2020-02-15 10:09:38', '2020-02-15 10:09:38'),
+(6, NULL, 'clothes', 'clothes', '../public/uploads/NATURE+GENERIC+TREES.jpg', 0, 'wedf', '2020-02-15 11:55:28', '2020-02-15 11:55:28'),
+(7, 6, 'manswear', 'manswear', '', 1, 'mans Wear', '2020-02-17 09:16:45', '2020-02-17 09:16:45'),
 (8, 2, 'mobile', 'mobile', '', 1, 'mobiles', '2020-02-17 09:16:45', '2020-02-17 09:16:45'),
-(11, 6, 'ladies Wear', 'ladieswear', '', 1, 'ladies wear', '2020-02-17 10:01:51', '2020-02-17 10:01:51'),
+(11, 6, 'ladieswear', 'ladieswear', '', 1, 'ladies wear', '2020-02-17 10:01:51', '2020-02-17 10:01:51'),
 (12, 2, 'laptop', 'laptop', '', 1, 'laptop', '2020-02-17 10:02:46', '2020-02-17 10:02:46'),
-(13, 1, 'sports', 'sports', '', 1, 'sports shoes', '2020-02-17 10:03:45', '2020-02-17 10:03:45');
+(13, 1, 'sports ', 'sports ', '../public/uploads/sports.jpg ', 1, 'sports shoes ', '2020-02-17 10:03:45', '2020-02-17 10:03:45');
 
 -- --------------------------------------------------------
 

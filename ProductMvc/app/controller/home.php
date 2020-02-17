@@ -7,8 +7,9 @@ class Home extends \core\Controller
 {
     public function indexaction() 
     {
-        $category = Product::getCategory();
-        view::renderTemplate('home/index.html',['category'=>$category]);
+      
+         $category = Product::getCategory();
+         view::renderTemplate('home/index.html',['category'=>$category]);
     }
 }
 ?>

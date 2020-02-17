@@ -7,10 +7,9 @@ class Category extends \core\Controller
 {
     public function viewaction() 
     {
-            print_r($_POST);
-        //   $category = Product::getCategory();
-        //   view::renderTemplate('home/index.html',['category'=>$category]);
-        
+        $urlKey = $this->route_params['url'];
+        $product = Product::getAll('categories',"WHERE urlKey = '$urlKey'"); 
+        view::renderTemplate('home/index.html',['product'=>$product[0]]);
     }
 }
 ?>
