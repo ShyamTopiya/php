@@ -4,12 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+    <style>
+        a
+        {
+            font-size: 25px;
+            padding: 30px;
+            text-decoration: none;
+        }
+        .header
+        {
+            margin-top: 50px;
+            font-size: 40px;
+            background-color:yellowgreen;
+            height: 100%;
+            width: 100%;
+           
+            
+        }
+    </style>
 </head>
 <body>
     <nav>
-        <a href="/cybercom/php/productMvc/public/home/index">Home</a>
-        <a href="/cybercom/php/productMvc/public/aboutUs">About Us</a>
-        <a href="/cybercom/php/productMvc/public/contactUs">Contact Us</a>
+        <a href="/cybercom/php/productMvc/public">Home</a>
+        <a href="/cybercom/php/productMvc/public/aboutus">About Us</a>
+        <a href="/cybercom/php/productMvc/public/contactus">Contact Us</a>
     </nav>
     {% block body %}
     {% endblock %}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2020 at 07:44 PM
+-- Generation Time: Feb 17, 2020 at 11:11 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -48,7 +48,12 @@ INSERT INTO `categories` (`category_id`, `parent_id`, `categoryName`, `urlKey`, 
 (1, NULL, 'shoes ', 'we ', '../public/uploads/nature.jpg ', 1, 'qwert ', '2020-02-15 10:06:21', '2020-02-15 10:06:21'),
 (2, NULL, 'electronics', 'cvjk', '', 1, 'vbjkl;', '2020-02-15 10:08:02', '2020-02-15 10:08:02'),
 (3, 1, 'canvas', 'sdf', '', 1, 'sdfg', '2020-02-15 10:09:38', '2020-02-15 10:09:38'),
-(6, NULL, 'clothes', 'bjk', '../public/uploads/NATURE+GENERIC+TREES.jpg', 0, 'wedf', '2020-02-15 11:55:28', '2020-02-15 11:55:28');
+(6, NULL, 'clothes', 'bjk', '../public/uploads/NATURE+GENERIC+TREES.jpg', 0, 'wedf', '2020-02-15 11:55:28', '2020-02-15 11:55:28'),
+(7, 6, 'man\'s Wear', 'man\'s Wear', '', 1, 'mans Wear', '2020-02-17 09:16:45', '2020-02-17 09:16:45'),
+(8, 2, 'mobile', 'mobile', '', 1, 'mobiles', '2020-02-17 09:16:45', '2020-02-17 09:16:45'),
+(11, 6, 'ladies Wear', 'ladieswear', '', 1, 'ladies wear', '2020-02-17 10:01:51', '2020-02-17 10:01:51'),
+(12, 2, 'laptop', 'laptop', '', 1, 'laptop', '2020-02-17 10:02:46', '2020-02-17 10:02:46'),
+(13, 1, 'sports', 'sports', '', 1, 'sports shoes', '2020-02-17 10:03:45', '2020-02-17 10:03:45');
 
 -- --------------------------------------------------------
 
@@ -72,7 +77,8 @@ CREATE TABLE `cms_pages` (
 
 INSERT INTO `cms_pages` (`id`, `pageTitle`, `urlKey`, `Status`, `Content`, `createdAt`, `updatedAt`) VALUES
 (1, 'home', 'home', 1, 'This is home page', '2020-02-16 16:55:18', '2020-02-16 16:55:18'),
-(2, 'About Us ', 'aboutUs ', 1, 'This is About Us Page ', '2020-02-16 17:19:00', '2020-02-16 17:19:00');
+(2, 'About Us ', 'aboutUs ', 1, 'This is About Us Page ', '2020-02-16 17:19:00', '2020-02-16 17:19:00'),
+(3, 'Contact US', 'contactus', 1, 'This is Contact Us Page', '2020-02-17 05:35:07', '2020-02-17 05:35:07');
 
 -- --------------------------------------------------------
 
@@ -152,13 +158,13 @@ ALTER TABLE `products_categories`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `cms_pages`
 --
 ALTER TABLE `cms_pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`

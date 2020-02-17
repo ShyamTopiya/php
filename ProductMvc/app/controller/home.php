@@ -7,8 +7,8 @@ class Home extends \core\Controller
 {
     public function indexaction() 
     {
-        $cms = Product::getAll('cms_pages',"WHERE pageTitle = 'home'");
-        view::renderTemplate('home/index.html',['cms'=>$cms[0]]);
+        $category = Product::getCategory();
+        view::renderTemplate('home/index.html',['category'=>$category]);
     }
 }
 ?>

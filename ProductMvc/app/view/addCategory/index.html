@@ -47,7 +47,7 @@
                 <label>parent Category</label>
                 <select name="parent_id">
                     <option value="Null">NULL</option>
-                    {% for items in allcategory %}
+                    {% for items in parentCategory %}
                     {% if items.category_id == category.parent_id %}
                         {% set select = 'selected' %}
                     {% else %}

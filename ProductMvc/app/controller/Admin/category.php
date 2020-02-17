@@ -8,8 +8,12 @@ class Category extends \core\controller
 {
     public function addNewaction()
     {
-        $allcategory = Product::getAll('categories');
-        view::renderTemplate('addCategory/index.html',['allcategory'=>$allcategory]);
+        //$allcategory = Product::getAll('categories');
+        $parentcategory = Product::getAll('categories','WHERE parent_id IS NULL');
+        //echo "<pre>";
+        //print_r($allcategory);
+        //print_r($parentcategory);
+        view::renderTemplate('addCategory/index.html',['parentCategory'=>$parentcategory]);
     }
     public function imageValidate()
     {
@@ -29,9 +33,9 @@ class Category extends \core\controller
     }
     public function editaction()
     {
-    $allcategory = Product::getAll('categories');
+    $parentcategory = Product::getAll('categories','WHERE parent_id IS NULL');
     $category = addCategory::editCategory($this->route_params['id']);
-    view::renderTemplate('addCategory/index.html',['edit'=>'edit','category'=>$category,'allcategory'=>$allcategory]);
+    view::renderTemplate('addCategory/index.html',['edit'=>'edit','category'=>$category,'parentCategory'=>$parentcategory]);
     }
 
     public function updateCategory()

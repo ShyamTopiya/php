@@ -34,6 +34,10 @@ class Router
                 }
             }
             $this->params = $params;
+            if(!isset($this->params['action']))
+            {
+                $this->params['action'] = 'index';
+            }
                 return true;
             }   
             }

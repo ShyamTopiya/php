@@ -1,8 +1,16 @@
 {% extends "frontbase.html" %}
-{% block title %} {{cms.Pagetitle}} {% endblock %}
+
 {% block body %}
-        {%for value in cms%}
-            <h1>{{value.Pagetitle}}</h1>
-            <h3>{{value.content}}</h3>
-        {%endfor%}
+<h1>Categories</h1>
+
+    {% for value in category %}
+    <select onchange="location = this.value;">
+    <option>{{value.parentName}}</option>
+    {% set childarr = value.childName|split(',') %} 
+    {% for val in childarr %} 
+    <option value="category/view">{{val}}</option></a>
+    {% endfor %}
+    </select>
+    {% endfor %}
+        
 {% endblock %}

@@ -24,6 +24,9 @@ abstract class Model
             }catch(PDOException $e){
                 echo $e->getMessage();
             }
+        }
+        else{
+            return $db;
         } 
     }
 }
