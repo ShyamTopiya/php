@@ -9,7 +9,7 @@ class Category extends \core\Controller
     {
         $category = Product::getCategory();
         $cmsPages = Product::getAll('cms_pages');
-         $urlKey = $this->route_params['url'];
+        $urlKey = $this->route_params['url'];
 
         $product = Product::getAll('products',"WHERE urlKey = '$urlKey'"); 
         
