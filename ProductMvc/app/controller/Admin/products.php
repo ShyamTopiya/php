@@ -2,13 +2,15 @@
 namespace app\controller\Admin;
 use \Core\view;
 use \app\model\AddProducts;
+use \app\model\Product;
 
 
 class Products extends \core\controller
 {
     public function addNewaction()
     {
-        view::renderTemplate('addProduct/index.html');
+        $childcategory = Product::getAll('categories','WHERE parent_id IS NOT NULL');
+        view::renderTemplate('addProduct/index.html',['child'=>$childcategory]);
     }
     public function imageValidate()
     {
@@ -24,14 +26,15 @@ class Products extends \core\controller
     public function addProduct()
     {
         $_POST = $this->imageValidate();
+       
         addProducts::addProduct($_POST);
     }
 
     public function editaction()
     {
-      
+        $childcategory = Product::getAll('categories','WHERE parent_id IS NOT NULL');
          $products = addProducts::editProduct($this->route_params['id']);
-        view::renderTemplate('addProduct/index.html',['edit'=>'edit','products'=>$products]);
+        view::renderTemplate('addProduct/index.html',['edit'=>'edit','products'=>$products,'child'=>$childcategory]);
     }
 
     public function updateProduct()

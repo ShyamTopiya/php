@@ -12,7 +12,6 @@ class Product extends \core\Model
                 $db = static::getDB();
 
                 $stmt = $db->query("SELECT * FROM $table $condition ORDER BY createdAt");
-               
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
                  return $result;

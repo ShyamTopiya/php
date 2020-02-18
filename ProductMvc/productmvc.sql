@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2020 at 06:00 PM
+-- Generation Time: Feb 18, 2020 at 08:44 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -89,6 +89,7 @@ INSERT INTO `cms_pages` (`id`, `pageTitle`, `urlKey`, `Status`, `Content`, `crea
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `productName` varchar(100) NOT NULL,
+  `category_id` int(11) NOT NULL,
   `SKU` varchar(100) NOT NULL,
   `urlKey` varchar(200) NOT NULL,
   `Image` varchar(200) NOT NULL,
@@ -105,21 +106,19 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `productName`, `SKU`, `urlKey`, `Image`, `Status`, `Description`, `shortDescription`, `Price`, `Stock`, `createdAt`, `updatedAt`) VALUES
-(9, 'shoes   ', 'idk   ', 'shoes   ', '../public/uploads/nature.jpg ', 1, 'qwer   ', 'uytre   ', 1232, 23, '2020-02-15 06:07:48', '2020-02-15 06:07:48'),
-(10, 'mobile', 'idk', 'mobile', '../public/uploads/NATURE+GENERIC+TREES.jpg', 0, 'good', 'best', 20000, 15, '2020-02-16 18:31:08', '2020-02-16 18:31:08');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products_categories`
---
-
-CREATE TABLE `products_categories` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `products` (`id`, `productName`, `category_id`, `SKU`, `urlKey`, `Image`, `Status`, `Description`, `shortDescription`, `Price`, `Stock`, `createdAt`, `updatedAt`) VALUES
+(12, 'REDMInote8pro', 8, 'idk', 'mobile', '../public/uploads/redmi8pro.jpg', 1, 'note 8 pro', 'mi phone', 20000, 10, '2020-02-17 18:01:17', '2020-02-17 18:01:17'),
+(14, 'Realme3', 8, 'idk', 'mobile', '../public/uploads/mobile2.jpg', 1, 'realme 3', 'real me 3', 15000, 10, '2020-02-18 06:17:35', '2020-02-18 06:17:35'),
+(15, 'HPlaptop', 12, 'idk', 'laptop', '../public/uploads/laptop.jpg', 1, 'hp laptop', 'hp laptop', 35000, 5, '2020-02-18 06:23:31', '2020-02-18 06:23:31'),
+(16, 'DELLlaptop', 12, 'idk', 'laptop', '../public/uploads/laptop2.jpg', 1, 'dell laptop', 'dell laptop', 40000, 10, '2020-02-18 06:24:24', '2020-02-18 06:24:24'),
+(17, 'shirt', 7, 'idk', 'manswear', '../public/uploads/manwear.jpg', 1, 'shirts', 'shirts', 500, 50, '2020-02-18 06:34:03', '2020-02-18 06:34:03'),
+(18, 'Tshirt', 7, 'idk', 'manswear', '../public/uploads/manwear2.png', 1, 'Tshirt', 'Tshirt', 400, 80, '2020-02-18 06:34:50', '2020-02-18 06:34:50'),
+(19, 'ladiesWear', 11, 'idk', 'ladieswear', '../public/uploads/ladieswear.jpg', 1, 'dress', 'dress', 800, 40, '2020-02-18 06:36:10', '2020-02-18 06:36:10'),
+(20, 'Pants', 11, 'idk', 'ladieswear', '../public/uploads/ladieswear2.jpg', 1, 'pants', 'pants', 600, 50, '2020-02-18 06:36:49', '2020-02-18 06:36:49'),
+(21, 'addidas', 3, 'idk', 'canvas', '../public/uploads/canvas.jpg', 1, 'addidas', 'addidas', 1500, 40, '2020-02-18 07:37:18', '2020-02-18 07:37:18'),
+(22, 'nike', 3, 'idk', 'canvas', '../public/uploads/canvas2.jpg', 1, 'nike', 'nike', 2000, 48, '2020-02-18 07:37:56', '2020-02-18 07:37:56'),
+(23, 'Fila', 13, 'idk', 'sports', '../public/uploads/sports.jpg', 1, 'sports', 'sports', 1400, 80, '2020-02-18 07:40:18', '2020-02-18 07:40:18'),
+(24, 'puma', 13, 'idk', 'sports', '../public/uploads/sports2.jpg', 1, 'puma', 'puma', 1200, 90, '2020-02-18 07:41:48', '2020-02-18 07:41:48');
 
 --
 -- Indexes for dumped tables
@@ -142,13 +141,8 @@ ALTER TABLE `cms_pages`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `products_categories`
---
-ALTER TABLE `products_categories`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -170,13 +164,7 @@ ALTER TABLE `cms_pages`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `products_categories`
---
-ALTER TABLE `products_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables
@@ -187,6 +175,12 @@ ALTER TABLE `products_categories`
 --
 ALTER TABLE `categories`
   ADD CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`parent_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

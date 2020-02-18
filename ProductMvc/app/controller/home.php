@@ -9,7 +9,8 @@ class Home extends \core\Controller
     {
       
          $category = Product::getCategory();
-         view::renderTemplate('home/index.html',['category'=>$category]);
+         $cmsPages = Product::getAll('cms_pages');
+         view::renderTemplate('frontbase.html',['category'=>$category,'cmsPages'=>$cmsPages]);
     }
 }
 ?>

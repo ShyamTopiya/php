@@ -6,15 +6,14 @@
 {% endif %}
 {% block body %}
 <h1>{{title}}</h1>
-
-    {% for value in category %}
-    <select onchange="location = this.value;">
-    <option>{{value.parentName}}</option>
-    {% set childarr = value.childName|split(',') %} 
-    {% for val in childarr %} 
-    <option value="/cybercom/php/productMvc/public/category/view/{{val}}">{{val}}</option></a>
-    {% endfor %}
-    </select>
-    {% endfor %}
-     <img src="../../{{product.Image}}">  
+{% for items in product%}
+<div style="display: inline-flex;">
+    <div style="text-align: center;">
+       
+        <a href="/cybercom/php/productMvc/public/products/view/{{items.productName}}"><img src="../../{{items.Image}}"></a> <br>
+        <dt>{{items.productName}}</dt>
+       
+    </div>
+</div>
+{% endfor %}
 {% endblock %}

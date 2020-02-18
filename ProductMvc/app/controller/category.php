@@ -7,9 +7,13 @@ class Category extends \core\Controller
 {
     public function viewaction() 
     {
-        $urlKey = $this->route_params['url'];
-        $product = Product::getAll('categories',"WHERE urlKey = '$urlKey'"); 
-        view::renderTemplate('home/index.html',['product'=>$product[0]]);
+        $category = Product::getCategory();
+        $cmsPages = Product::getAll('cms_pages');
+         $urlKey = $this->route_params['url'];
+
+        $product = Product::getAll('products',"WHERE urlKey = '$urlKey'"); 
+        
+       view::renderTemplate('home/index.html',['product'=>$product,'category'=>$category,'cmsPages'=>$cmsPages]);
     }
 }
 ?>

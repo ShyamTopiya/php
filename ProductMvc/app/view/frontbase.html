@@ -4,13 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
     <style>
-        a
-        {
-            font-size: 25px;
-            padding: 30px;
-            text-decoration: none;
-        }
         .header
         {
             margin-top: 50px;
@@ -24,11 +22,33 @@
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/cybercom/php/productMvc/public">Home</a>
-        <a href="/cybercom/php/productMvc/public/aboutus">About Us</a>
-        <a href="/cybercom/php/productMvc/public/contactus">Contact Us</a>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand">E-Commarce</a>
+            </div>
+        <ul class="nav navbar-nav">
+            {% for page in cmsPages %}
+            <li><a href="/cybercom/php/productMvc/public/{{page.urlKey}}">{{page.pageTitle}}</a></li>
+             {% endfor %} 
+            {% for value in category %}
+            {% set childarr = value.childName|split(',') %}
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ value.parentName }}
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    {% for i in 0..childarr|length %}
+                        <li><a href="/cybercom/php/productMvc/public/Category/View/{{ childarr[i] }}">{{ childarr[i] }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>  
+                 {% endfor %}
+                </ul>
+               
+        </ul>
+        </div>
     </nav>
+    <h3>Welcome User</h3>
     {% block body %}
     {% endblock %}
 </body>

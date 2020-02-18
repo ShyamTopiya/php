@@ -16,6 +16,20 @@
             <label>Product Name</label>
             <input type="text" name="productName" value="{{products.productName}}">
         </div><br>
+            <div class="childCategory">
+                <label>product Category</label>
+                <select name="category_id">
+                    {% for items in child %}
+                    {% if items.category_id == products.category_id %}
+                        {% set select = 'selected' %}
+                    {% else %}
+                        {% set select = "" %}
+                    {% endif %}
+                        <option value="{{items.category_id}}" {{select}}>
+                            {{items.categoryName}}</option>
+                    {% endfor %}
+                </select>
+            </div><br>
         <div class="SKU">
             <label>SKU</label>
             <input type="text" name="SKU" value="{{products.SKU}}">

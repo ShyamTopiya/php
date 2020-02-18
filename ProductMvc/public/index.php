@@ -24,12 +24,12 @@ $router->add('admin/{controller}/{action}',['namespace'=>'admin']);
 $router->add('admin/{controller}/{id:\d+}/{action}',['namespace'=>'admin']);
 $router->add('{controller}/{action}/{url}');
 
-$url = $_SERVER['QUERY_STRING'];
+ $url = $_SERVER['QUERY_STRING'];
 if($router->match($url))
 {
-    echo "<pre>";
-    var_dump($router->getparams());
-    echo "</pre>";
+    // echo "<pre>";
+    //  var_dump($router->getparams());
+    //  echo "</pre>";
     
 }
 else{
