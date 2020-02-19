@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2020 at 08:44 AM
+-- Generation Time: Feb 19, 2020 at 05:38 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -37,7 +37,7 @@ CREATE TABLE `categories` (
   `Status` tinyint(1) NOT NULL,
   `Description` varchar(200) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -50,10 +50,10 @@ INSERT INTO `categories` (`category_id`, `parent_id`, `categoryName`, `urlKey`, 
 (3, 1, 'canvas ', 'canvas ', '../public/uploads/canvas.jpg ', 1, 'sdfg ', '2020-02-15 10:09:38', '2020-02-15 10:09:38'),
 (6, NULL, 'clothes', 'clothes', '../public/uploads/NATURE+GENERIC+TREES.jpg', 0, 'wedf', '2020-02-15 11:55:28', '2020-02-15 11:55:28'),
 (7, 6, 'manswear', 'manswear', '', 1, 'mans Wear', '2020-02-17 09:16:45', '2020-02-17 09:16:45'),
-(8, 2, 'mobile', 'mobile', '', 1, 'mobiles', '2020-02-17 09:16:45', '2020-02-17 09:16:45'),
 (11, 6, 'ladieswear', 'ladieswear', '', 1, 'ladies wear', '2020-02-17 10:01:51', '2020-02-17 10:01:51'),
 (12, 2, 'laptop', 'laptop', '', 1, 'laptop', '2020-02-17 10:02:46', '2020-02-17 10:02:46'),
-(13, 1, 'sports ', 'sports ', '../public/uploads/sports.jpg ', 1, 'sports shoes ', '2020-02-17 10:03:45', '2020-02-17 10:03:45');
+(13, 1, 'sports ', 'sports ', '../public/uploads/sports.jpg ', 1, 'sports shoes ', '2020-02-17 10:03:45', '2020-02-17 10:03:45'),
+(15, 2, 'mobile', 'mobile', '../public/uploads/', 1, 'mobile', '2020-02-18 10:08:27', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,7 @@ CREATE TABLE `cms_pages` (
   `Status` tinyint(1) NOT NULL,
   `Content` varchar(100) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `updatedAt` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `products` (
   `Price` float NOT NULL,
   `Stock` int(11) NOT NULL,
   `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updatedAt` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `updatedAt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -107,8 +107,6 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `productName`, `category_id`, `SKU`, `urlKey`, `Image`, `Status`, `Description`, `shortDescription`, `Price`, `Stock`, `createdAt`, `updatedAt`) VALUES
-(12, 'REDMInote8pro', 8, 'idk', 'mobile', '../public/uploads/redmi8pro.jpg', 1, 'note 8 pro', 'mi phone', 20000, 10, '2020-02-17 18:01:17', '2020-02-17 18:01:17'),
-(14, 'Realme3', 8, 'idk', 'mobile', '../public/uploads/mobile2.jpg', 1, 'realme 3', 'real me 3', 15000, 10, '2020-02-18 06:17:35', '2020-02-18 06:17:35'),
 (15, 'HPlaptop', 12, 'idk', 'laptop', '../public/uploads/laptop.jpg', 1, 'hp laptop', 'hp laptop', 35000, 5, '2020-02-18 06:23:31', '2020-02-18 06:23:31'),
 (16, 'DELLlaptop', 12, 'idk', 'laptop', '../public/uploads/laptop2.jpg', 1, 'dell laptop', 'dell laptop', 40000, 10, '2020-02-18 06:24:24', '2020-02-18 06:24:24'),
 (17, 'shirt', 7, 'idk', 'manswear', '../public/uploads/manwear.jpg', 1, 'shirts', 'shirts', 500, 50, '2020-02-18 06:34:03', '2020-02-18 06:34:03'),
@@ -118,7 +116,9 @@ INSERT INTO `products` (`id`, `productName`, `category_id`, `SKU`, `urlKey`, `Im
 (21, 'addidas', 3, 'idk', 'canvas', '../public/uploads/canvas.jpg', 1, 'addidas', 'addidas', 1500, 40, '2020-02-18 07:37:18', '2020-02-18 07:37:18'),
 (22, 'nike', 3, 'idk', 'canvas', '../public/uploads/canvas2.jpg', 1, 'nike', 'nike', 2000, 48, '2020-02-18 07:37:56', '2020-02-18 07:37:56'),
 (23, 'Fila', 13, 'idk', 'sports', '../public/uploads/sports.jpg', 1, 'sports', 'sports', 1400, 80, '2020-02-18 07:40:18', '2020-02-18 07:40:18'),
-(24, 'puma', 13, 'idk', 'sports', '../public/uploads/sports2.jpg', 1, 'puma', 'puma', 1200, 90, '2020-02-18 07:41:48', '2020-02-18 07:41:48');
+(24, 'puma ', 13, 'idk ', 'sports ', '../public/uploads/sports2.jpg ', 1, 'puma ', 'puma ', 1200, 90, '2020-02-18 07:41:48', '2020-02-18 05:05:05'),
+(25, 'redminote8pro', 15, 'idk', 'mobile', '../public/uploads/redmi8pro.jpg', 1, 'redmi', 'redmi', 15000, 40, '2020-02-18 10:10:22', NULL),
+(26, 'Realme3', 15, 'idk', 'mobile', '../public/uploads/mobile2.jpg', 1, 'realme', 'realme', 20000, 80, '2020-02-18 10:11:05', NULL);
 
 --
 -- Indexes for dumped tables
@@ -152,7 +152,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `cms_pages`
@@ -164,7 +164,7 @@ ALTER TABLE `cms_pages`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Constraints for dumped tables
