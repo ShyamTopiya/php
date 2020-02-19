@@ -40,6 +40,7 @@ class Products extends \core\controller
     public function updateProduct()
     {
         $_POST = $this->imageValidate();
+        $_POST['updatedAt'] = date('Y-m-d H:i:s',time());
         addProducts::updateProduct($this->route_params['id'],$_POST);
     }
 

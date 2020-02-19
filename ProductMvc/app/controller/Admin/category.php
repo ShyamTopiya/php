@@ -41,11 +41,12 @@ class Category extends \core\controller
     public function updateCategory()
     {
         $_POST = $this->imageValidate();
+        $_POST['updatedAt'] = date('Y-m-d H:i:s',time());
         addCategory::updateCategory($this->route_params['id'],$_POST);
     }
 
     public function delete()
     {
-        addCategory::deleteCategory($this->route_params['id']);
+        Product::deleteCatPro($this->route_params['id']);
     }
 }

@@ -48,6 +48,25 @@ class Product extends \core\Model
                 echo $e->getMessage();
             }
         } 
+        public function deleteCatPro($id)
+        {
+            try
+            {
+                $db = static::getDB();
+
+                $stmt = $db->query("DELETE products, categories
+                FROM products
+                INNER JOIN categories ON products.category_id = categories.category_id
+                WHERE products.category_id = '$id'");
+                var_dump($stmt);
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                 return $result;
+                    
+            }catch(PDOException $e){
+                echo $e->getMessage();
+            }
+        }
     }
         
 

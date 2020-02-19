@@ -22,6 +22,7 @@ class Cmspages extends \core\controller
     }
     public function updateCms()
     {
+        $_POST['updatedAt'] = date('Y-m-d H:i:s',time());
         Addcms::updateCms($this->route_params['id'],$_POST);
     }
 
