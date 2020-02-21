@@ -1,0 +1,29 @@
+{% block body %}
+<h1>Registration Form</h1>
+
+<form action="postdata" method="POST">
+    <label>FirstName</label>
+    <input type="text" name="Firstname"><br><br>
+    <label>Last name</label>
+    <input type="text" name="LastName"><br><br>
+    <label>Email</label>
+    <input type="email" name="Email"><br><br>
+    <label>Password</label>
+    <input type="password" name="Password"><br><br>
+    <label>PhoneNumber</label>
+    <input type="number" maxlength="10" name="PhoneNumber"><br><br>
+    <label>Street</label>
+    <input type="text" name="Street"><br><br>
+    <label>City</label>
+    <input type="text" name="City"><br><br>
+    <label>Email</label>
+    <input type="State" name="State"><br><br>
+    <label>Password</label>
+    <input type="Zipcode" name="Zipcode" maxlength="6"><br><br>
+    <label>Country</label>
+    <input type="number" name="Country"><br><br>
+    
+
+    <input type="submit" value="submit">
+</form>
+{% endblock %}

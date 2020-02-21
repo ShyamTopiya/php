@@ -1,0 +1,17 @@
+
+
+    <h1>Log in page</h1>
+{% block body %}
+    <form action="user/dashboard" method="POST">
+        <div class="email">
+            <label>Email</label>
+            <input type="email" name="email">
+        </div><br>
+        <div class="password">
+            <label>Password</label>
+            <input type="password" name="password">
+        </div><br>
+        <input type="submit" value="Login">
+    </form> 
+    <a href="/cybercom/php/vehicalregistration/public/user/registerdata">Register Here</a>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% set timeslot = [] %}
+{% set timeslot = timeslot|merge(['1-2','2-3','3-4','4-5']) %}
+{% if edit == 'edit' %}
+    {% set btn = 'Update' %}
+    {% set action = 'updateservice' %}
+{% else %}
+    {% set btn = 'Add' %}
+    {% set action = 'serviceData' %}
+{% endif %}
+
+{% block body %}
+<h1>Vehicle Service</h1>
+<form action="{{action}}" method="POST">
+
+    <label>Title</label>
+    <input type="text" name="Title" value="{{data.Title}}"><br><br>
+    <label>Vehicle number</label>
+    <input type="text" name="Vehicle_number" value="{{data.Vehicle_number}}"><br><br>
+    <label>user license number</label>
+    <input type="text" name="user_license_number" value="{{data.user_license_number}}"><br><br>
+    <!-- <script>
+        var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    var yyyy = today.getFullYear();
+    
+    today = mm + '/' + dd + '/' + yyyy;
+    
+    function myFunction() {
+    var x = document.getElementById("date").min = today;
+    }
+    </script> -->
+    <label>Date</label>
+    <input type="Date" name="Date" min="2020-02-21" max="2020-12-30" id="date"><br><br>
+    <div class="parentCategory">
+        <label>Timeslot </label>
+        <select name="Timeslot">
+            {% for items in timeslot %}
+            <!-- {% if items.category_id == category.parent_id %}
+                {% set select = 'selected' %}
+            {% else %}
+                {% set select = "" %}
+            {% endif %}
+            {{items.parent_id}} -->
+                <option value="{{items}}" {{select}}>
+                    {{items}}</option>
+            {% endfor %}
+        </select>
+    </div><br>
+    <label>Vehicle issue</label>
+    <input type="text" name="Vehicle_issue" value="{{data.Vehicle_issue}}"><br><br>
+    <label>Service center</label>
+    <input type="text" name="Service_center" value="{{data.Service_center}}"><br><br>
+    <input type="submit" value="{{btn}}">
+</form>
+
+{% endblock %}

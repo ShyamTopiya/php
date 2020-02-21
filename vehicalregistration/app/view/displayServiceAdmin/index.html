@@ -1,0 +1,32 @@
+{% block body %}
+<h1>Admin </h1>
+<table border=1>
+    <tr>
+        <th>user_id</th>
+        <th>Vehicle_number</th>
+        <th>user_license_number</th>
+        <th>Date</th>
+        <th>Timeslot</th>
+        <th>Vehicle_issue</th>
+        <th>Service_center</th>
+        <th>Status</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    {% for items in data %}
+    <tr>
+        <td>{{items.user_id}}</td>
+        <td>{{items.Vehicle_number}}</td>
+        <td>{{items.user_license_number}}</td>
+        <td>{{items.Date}}</td>
+        <td>{{items.Timeslot}}</td>
+        <td>{{items.Vehicle_issue}}</td>
+        <td>{{items.Service_center}}</td>
+        <td>{{items.Status}}</td>
+        <td><a href="admin/update">update</a></td>
+        <td><a href="admin/delete">delete</a></td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
