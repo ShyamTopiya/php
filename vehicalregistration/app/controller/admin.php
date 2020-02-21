@@ -14,10 +14,12 @@ class Admin extends \core\controller
     }
     public function update()
     {
-        $result =  Fetchdata::getAll('service_registrations',"WHERE user_id = 3");
-        view::renderTemplate('vehicleservice/index.html',['data'=>$result,'edit'=>'edit']);
-
+        $id = $this->route_params['id'];
+        $data =  Fetchdata::update('service_registrations',$id);
+        Fetchdata::getAll('service_registrations');
+        view::renderTemplate('displayServiceAdmin/index.html');
     }
+    
 }
 
 ?>

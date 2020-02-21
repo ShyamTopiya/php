@@ -17,6 +17,8 @@ class User extends \core\controller
         if($userData)
         {
             view::renderTemplate('dashboard/index.html');
+            $result =  Fetchdata::getAll('service_registrations',"WHERE user_id = 3"); 
+             view::renderTemplate('displayService/index.html',['data'=>$result]);
         }
         else
         {
@@ -99,9 +101,10 @@ class User extends \core\controller
     }
     public function displayService()
     {
-       $result =  Fetchdata::getAll('service_registrations',"WHERE user_id = 3");
-        
-       view::renderTemplate('displayService/index.html',['data'=>$result]);
+      
+        $result =  Fetchdata::getAll('service_registrations',"WHERE user_id = 3"); 
+       // print_r($result);
+        view::renderTemplate('displayService/index.html',['data'=>$result]);
     }
     }
 ?>

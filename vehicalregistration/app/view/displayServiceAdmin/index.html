@@ -10,8 +10,7 @@
         <th>Vehicle_issue</th>
         <th>Service_center</th>
         <th>Status</th>
-        <th>Update</th>
-        <th>Delete</th>
+        <th>Update_status</th>
     </tr>
     {% for items in data %}
     <tr>
@@ -23,8 +22,8 @@
         <td>{{items.Vehicle_issue}}</td>
         <td>{{items.Service_center}}</td>
         <td>{{items.Status}}</td>
-        <td><a href="admin/update">update</a></td>
-        <td><a href="admin/delete">delete</a></td>
+        <td><a href="admin/{{items.service_id}}/update">Approve</a></td>
+      
     </tr>
     {% endfor %}
 

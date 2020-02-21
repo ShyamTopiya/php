@@ -11,8 +11,8 @@ class Fetchdata extends \core\Model
             {
                 $db = static::getDB();
 
-                $stmt = $db->query("SELECT * FROM $table $condition");
-                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                 $stmt = $db->query("SELECT * FROM $table $condition");
+                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 //echo "SELECT * FROM $table $condition";
                 return $result;
                
@@ -45,36 +45,24 @@ class Fetchdata extends \core\Model
             }
         }
         
-        public static function updateProduct($value,$id,$product_id)
+        public static function update($table,$id)
         {
             try
             {
                 $db = static::getDB();
                 
-                $sql = "UPDATE usercart SET quntity = $value WHERE user_id = '$id' AND product_id = '$product_id'";  
+                $sql = "UPDATE $table SET Status = 1 WHERE service_id = $id ";  
                   echo $sql;
                 $db->exec($sql);
-                 
+                echo "<script>
+                alert('user added successfully');
+                window.location.replace('/cybercom/php/vehicalregistration/public/admin');
+            </script>";
             }
             catch(PDOException $e){
                 echo $e->getMessage();
             }   
         }
-        public static function deleteProduct($value ="",$userid)
-            {
-                try
-                    {
-                        $db = static::getDB();
-    
-                        $stmt = "DELETE FROM usercart WHERE product_id=$value AND user_id = $userid";
-                       
-                        $db->exec($stmt);
-                  
-            
-                    }catch(PDOException $e){
-                        echo $e->getMessage();
-                    }
-                } 
                 public static function addService($table="",$value = [],$condition="")
                 {
                 try
